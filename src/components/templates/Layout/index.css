@@ -1,8 +1,0 @@
-.layout-wrapper{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    background-color: var(--bg-color);
-    min-height: 100vh;
-}

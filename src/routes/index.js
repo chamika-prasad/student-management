@@ -1,30 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Layout } from "components/templates";
-import { AdminHome } from "components/page/admin";
-import { SecurityHome } from "components/page/security";
-import { LoginPage, Attendance } from "components/page/common";
-import { userContext } from "context";
+import Home from "components/pages/Login";
+import Dashboard from "components/pages/DashBoard";
+import RootLayout from "components/templates/RootLayout";
+import "./../styles/globals.css";
 
 export const AppRotes = () => {
-  const { userType } = useContext(userContext);
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/" element={<Layout />}>
-        <Route
-          index
-          element={
-            userType == "admin" ? (
-              <AdminHome />
-            ) : userType == "user" ? (
-              <SecurityHome />
-            ) : (
-              <Navigate to="/login" replace />
-            )
-          }
-        />
-        <Route path="/attendance" element={<Attendance />} />
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Route>
     </Routes>
   );
